@@ -97,7 +97,7 @@ app.post('/users', (req, res, next) => {
   };
 
   EmailService.send(options)
-    .then(result => res.render('users/new', {result}))
+    .then(result => res.render('users/new', {result: JSON.stringify(result, null, 2)}))
     .catch(next);
 });
 
@@ -105,10 +105,10 @@ app.post('/users', (req, res, next) => {
 // Server
 // ----------------------------------------
 const port = process.env.PORT || process.argv[2] || 3000;
-const host = "localhost";
+const host = process.env.C9_HOSTNAME || "localhost";
 
 let args;
-process.env.NODE_ENV === "production" ? (args = [port]) : (args = [port, host]);
+process.env.NODE_ENV === "production" ? (args = [port]) : (args = [port]);
 
 args.push(() => {
   console.log(`Listening: http://${host}:${port}\n`);
