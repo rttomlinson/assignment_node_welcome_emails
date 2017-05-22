@@ -1,0 +1,36 @@
+
+<header class="page-header text-center">
+  <h1>Create a New User</h1>
+</header>
+
+
+{{#if result }}
+  <pre>{{ json result }}</pre>
+{{/if}}
+
+
+<form action="/users" method="post">
+  <div class="form-group">
+    <label for="first-name">First Name</label>
+    <input type="text" id="first-name" name="firstName" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="last-name">Last Name</label>
+    <input type="text" id="last-name" name="lastName" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-success">
+  </div>
+</form>
