@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const sendGridTransport = require('nodemailer-sendgrid-transport');
 
 let _options = {
   service: 'gmail',
@@ -8,7 +9,17 @@ let _options = {
   }
 };
 
-const _transporter = nodemailer.createTransport(_options);
+
+let _optionsSendGrid = {
+   service: 'SendGrid',
+  auth: {
+   user: process.env.SENDGRID_USERNAME,
+   pass: process.env.SENDGRID_PASSWORD
+  } 
+}
+
+
+const _transporter = nodemailer.createTransport(sendGridTransport(_optionsSendGrid));
 
 const EmailService = {};
 
